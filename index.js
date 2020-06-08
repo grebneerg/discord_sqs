@@ -12,7 +12,10 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 	sqs.sendMessage({
-		MessageBody: JSON.stringify(msg),
+		MessageBody: JSON.stringify({
+			content: msg.content,
+			name: msg.member.displayName,
+		}),
 		QueueUrl: process.argv[3],
 	}).promise()
 });
