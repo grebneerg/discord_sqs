@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-AWS.config.update({region:'us-east-1'});
+AWS.config.update({region:process.argv[4]});
 const sqs = new AWS.SQS();
 
 client.on('ready', () => {
